@@ -6,11 +6,11 @@ namespace Plakart\InternalNewsBundle;
 
 final class Category
 {
-    public const TABLE = 'tl_sgv_internal_news';
+    public const TABLE = 'tl_plakart_internal_news';
 
-    public const MODULE_EDIT = 'sgv_internal_news';
+    public const MODULE_EDIT = 'plakart_internal_news';
 
-    public const MODULE_LIST = 'sgv_internal_news_list';
+    public const MODULE_LIST = 'plakart_internal_news_list';
 
     public const COLORS = [
         'security' => 'var(--red)',

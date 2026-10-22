@@ -48,7 +48,7 @@ class DashboardListener
         );
 
         $lang = $this->renderer->lang()['dashboard'];
-        $html = '<div id="sgv_internal_news"><h2>'.htmlspecialchars($lang['headline']).'</h2>';
+        $html = '<div id="plakart_internal_news"><h2>'.htmlspecialchars($lang['headline']).'</h2>';
 
         if ([] === $rows) {
             return $html.'<p>'.htmlspecialchars($lang['empty']).'</p></div>';
