@@ -22,7 +22,7 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
             'panelLayout' => 'filter;limit',
         ],
         'label' => [
-            'fields' => ['date', 'category', 'text'],
+            'fields' => ['date', 'category', 'headline', 'text'],
             'showColumns' => true,
         ],
         'global_operations' => [
@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
         ],
     ],
     'palettes' => [
-        'default' => 'date,category,text',
+        'default' => 'date,category,headline,text',
     ],
     'fields' => [
         'id' => [
@@ -63,6 +63,11 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
             'reference' => &$GLOBALS['TL_LANG'][Category::TABLE]['categories'],
             'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
             'sql' => "varchar(32) NOT NULL default ''",
+        ],
+        'headline' => [
+            'inputType' => 'text',
+            'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'clr'],
+            'sql' => "varchar(255) NOT NULL default ''",
         ],
         'text' => [
             'inputType' => 'textarea',

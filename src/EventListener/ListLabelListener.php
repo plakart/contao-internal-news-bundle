@@ -29,6 +29,7 @@ class ListLabelListener
         return [
             $this->renderer->formatDate($row['date']),
             $this->renderer->badge((string) $row['category']),
+            StringUtil::specialchars((string) $row['headline']),
             StringUtil::specialchars($text),
         ];
     }

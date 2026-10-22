@@ -17,15 +17,16 @@ final class Category
     public const MODULE_LIST = 'sgv_internal_news_list';
 
     /**
-     * Kategorie => Contao-CSS-Variable für die Label-Farbe (hell/dunkel automatisch).
+     * Kategorie => CSS-Farbe für das Label. Contao-Variablen passen sich Hell/Dunkel automatisch an.
      */
     public const COLORS = [
-        'security' => '--red',
-        'hosting' => '--blue',
-        'redaktionstool' => '--green',
-        'recht' => '--orange',
-        'web' => '--contao',
-        'vertrag' => '--gray',
+        'security' => 'var(--red)',
+        'hosting' => 'var(--blue)',
+        'redaktionstool' => 'var(--green)',
+        'recht' => 'var(--orange)',
+        'web' => 'var(--contao)',
+        'vertrag' => 'var(--gray)',
+        'schulung' => '#8250c8',
     ];
 
     /**

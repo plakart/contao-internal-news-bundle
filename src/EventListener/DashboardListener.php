@@ -50,7 +50,7 @@ class DashboardListener
     private function render(): string
     {
         $rows = $this->connection->fetchAllAssociative(
-            \sprintf('SELECT `date`, category, `text` FROM %s ORDER BY `date` DESC, id DESC LIMIT %d', Category::TABLE, self::LIMIT),
+            \sprintf('SELECT `date`, category, headline, `text` FROM %s ORDER BY `date` DESC, id DESC LIMIT %d', Category::TABLE, self::LIMIT),
         );
 
         $trans = fn (string $key): string => $this->translator->trans($key, [], 'contao_tl_sgv_internal_news');
@@ -64,9 +64,10 @@ class DashboardListener
 
         foreach ($rows as $row) {
             $html .= \sprintf(
-                '<li style="padding:.6rem 0;border-bottom:1px solid var(--content-border)"><div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.25rem"><time style="color:var(--gray)">%s</time>%s</div><div>%s</div></li>',
+                '<li style="padding:.6rem 0;border-bottom:1px solid var(--content-border)"><div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.25rem"><time style="color:var(--gray)">%s</time>%s</div><div><strong style="display:block">%s</strong>%s</div></li>',
                 htmlspecialchars($this->renderer->formatDate($row['date'])),
                 $this->renderer->badge((string) $row['category']),
+                htmlspecialchars((string) $row['headline']),
                 $this->renderer->text((string) $row['text']),
             );
         }
