@@ -1,0 +1,55 @@
+.plakart-news {
+    margin: 0 0 1.5rem;
+}
+
+.plakart-news__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.plakart-news__item {
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--content-border);
+}
+
+.plakart-news__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    margin-bottom: .25rem;
+}
+
+.plakart-news__date {
+    color: var(--gray);
+}
+
+.plakart-news__headline {
+    display: block;
+}
+
+.plakart-news__all {
+    margin-top: .75rem;
+}
+
+.plakart-news-badge {
+    --plakart-news-color: var(--gray);
+    display: inline-block;
+    padding: 1px 8px;
+    border: 1px solid color-mix(in srgb, var(--plakart-news-color) 60%, transparent);
+    border-radius: .375rem;
+    background: color-mix(in srgb, var(--plakart-news-color) 15%, transparent);
+    color: var(--text);
+    font-size: .85em;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.plakart-news-badge--security { --plakart-news-color: var(--red); }
+.plakart-news-badge--hosting { --plakart-news-color: var(--blue); }
+.plakart-news-badge--redaktionstool { --plakart-news-color: var(--green); }
+.plakart-news-badge--recht { --plakart-news-color: var(--orange); }
+.plakart-news-badge--web { --plakart-news-color: var(--contao); }
+.plakart-news-badge--vertrag { --plakart-news-color: var(--gray); }
+.plakart-news-badge--schulung { --plakart-news-color: #8250c8; }

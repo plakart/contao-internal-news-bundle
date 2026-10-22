@@ -12,14 +12,14 @@ final class Category
 
     public const MODULE_LIST = 'plakart_internal_news_list';
 
-    public const COLORS = [
-        'security' => 'var(--red)',
-        'hosting' => 'var(--blue)',
-        'redaktionstool' => 'var(--green)',
-        'recht' => 'var(--orange)',
-        'web' => 'var(--contao)',
-        'vertrag' => 'var(--gray)',
-        'schulung' => '#8250c8',
+    private const KEYS = [
+        'security',
+        'hosting',
+        'redaktionstool',
+        'recht',
+        'web',
+        'vertrag',
+        'schulung',
     ];
 
     /**
@@ -27,6 +27,6 @@ final class Category
      */
     public static function keys(): array
     {
-        return array_keys(self::COLORS);
+        return self::KEYS;
     }
 }

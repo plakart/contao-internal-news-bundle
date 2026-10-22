@@ -42,11 +42,9 @@ class NewsRenderer
 
     public function badge(string $category): string
     {
-        $color = Category::COLORS[$category] ?? 'var(--gray)';
-
         return \sprintf(
-            '<span style="display:inline-block;padding:1px 8px;border:1px solid color-mix(in srgb,%1$s 60%%,transparent);border-radius:var(--border-radius,.375rem);background:color-mix(in srgb,%1$s 15%%,transparent);color:var(--text);font-size:.85em;line-height:1.5;white-space:nowrap">%2$s</span>',
-            $color,
+            '<span class="plakart-news-badge plakart-news-badge--%s">%s</span>',
+            StringUtil::specialchars($category),
             StringUtil::specialchars($this->categoryLabel($category)),
         );
     }

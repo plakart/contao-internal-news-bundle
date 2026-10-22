@@ -39,9 +39,11 @@ manage entries, all back end users can read them.
 
    Alternatively, run the database update in the Contao install tool.
 
-4. Clear and warm up the cache (`contao-setup` usually does this during `composer require`):
+4. Install the assets (back end stylesheet), then clear and warm up the cache
+   (`contao-setup` usually does both during `composer require`):
 
    ```bash
+   php bin/console assets:install --symlink --relative
    php bin/console cache:clear --env=prod
    php bin/console cache:warmup --env=prod
    ```

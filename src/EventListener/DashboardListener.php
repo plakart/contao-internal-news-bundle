@@ -10,7 +10,7 @@ use Plakart\InternalNewsBundle\Category;
 use Plakart\InternalNewsBundle\Dashboard\NewsRenderer;
 use Symfony\Component\Routing\RouterInterface;
 
-// Contao 5.7 has no dashboard widget API, so the panel is injected into be_welcome.
+// Contao 5.7 has no dashboard widget API, so the panel is injected into be_welcome, above the version list.
 #[AsHook('parseBackendTemplate')]
 class DashboardListener
 {
@@ -29,16 +29,13 @@ class DashboardListener
             return $buffer;
         }
 
-        $marker = '<div id="tl_soverview">';
-        $position = strpos($buffer, $marker);
+        $position = strpos($buffer, '<div id="tl_versions">');
 
         if (false === $position) {
             return $buffer;
         }
 
-        $position += \strlen($marker);
-
-        return substr($buffer, 0, $position)."\n".$this->render().substr($buffer, $position);
+        return substr($buffer, 0, $position).$this->render()."\n".substr($buffer, $position);
     }
 
     private function render(): string
@@ -48,17 +45,17 @@ class DashboardListener
         );
 
         $lang = $this->renderer->lang()['dashboard'];
-        $html = '<div id="plakart_internal_news"><h2>'.htmlspecialchars($lang['headline']).'</h2>';
+        $html = '<div class="plakart-news"><h2>'.htmlspecialchars($lang['headline']).'</h2>';
 
         if ([] === $rows) {
             return $html.'<p>'.htmlspecialchars($lang['empty']).'</p></div>';
         }
 
-        $html .= '<ul style="list-style:none;margin:0;padding:0">';
+        $html .= '<ul class="plakart-news__list">';
 
         foreach ($rows as $row) {
             $html .= \sprintf(
-                '<li style="padding:.6rem 0;border-bottom:1px solid var(--content-border)"><div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.25rem"><time style="color:var(--gray)">%s</time>%s</div><div><strong style="display:block">%s</strong>%s</div></li>',
+                '<li class="plakart-news__item"><div class="plakart-news__meta"><time class="plakart-news__date">%s</time>%s</div><div><strong class="plakart-news__headline">%s</strong>%s</div></li>',
                 htmlspecialchars($this->renderer->formatDate($row['date'])),
                 $this->renderer->badge((string) $row['category']),
                 htmlspecialchars((string) $row['headline']),
@@ -68,6 +65,6 @@ class DashboardListener
 
         $url = $this->router->generate('contao_backend', ['do' => Category::MODULE_LIST]);
 
-        return $html.\sprintf('</ul><p style="margin-top:.75rem"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($lang['all']));
+        return $html.\sprintf('</ul><p class="plakart-news__all"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($lang['all']));
     }
 }
