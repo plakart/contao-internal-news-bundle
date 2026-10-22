@@ -11,11 +11,7 @@ use Plakart\InternalNewsBundle\Dashboard\NewsRenderer;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * Contao 5.7 hat keine Dashboard-Widgets. Die Startseite wird als Template "be_welcome"
- * gerendert; der offizielle Hook parseBackendTemplate erlaubt es, dort einen Abschnitt
- * einzufügen, ohne ein Core-Template zu überschreiben.
- */
+// Contao 5.7 has no dashboard widget API, so the panel is injected into be_welcome.
 #[AsHook('parseBackendTemplate')]
 class DashboardListener
 {
@@ -53,7 +49,7 @@ class DashboardListener
             \sprintf('SELECT `date`, category, headline, `text` FROM %s ORDER BY `date` DESC, id DESC LIMIT %d', Category::TABLE, self::LIMIT),
         );
 
-        $trans = fn (string $key): string => $this->translator->trans($key, [], 'contao_tl_sgv_internal_news');
+        $trans = fn (string $key): string => $this->translator->trans($key, [], 'contao_tl_sgv_internal_news', 'de');
         $html = '<div id="sgv_internal_news"><h2>'.htmlspecialchars($trans('dashboard.headline')).'</h2>';
 
         if ([] === $rows) {

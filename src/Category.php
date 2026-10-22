@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Plakart\InternalNewsBundle;
 
-/**
- * Feste Kategorie-Liste. Die Labels stehen in der Sprachdatei
- * ($GLOBALS['TL_LANG']['tl_sgv_internal_news']['categories']).
- */
 final class Category
 {
     public const TABLE = 'tl_sgv_internal_news';
@@ -16,9 +12,6 @@ final class Category
 
     public const MODULE_LIST = 'sgv_internal_news_list';
 
-    /**
-     * Kategorie => CSS-Farbe für das Label. Contao-Variablen passen sich Hell/Dunkel automatisch an.
-     */
     public const COLORS = [
         'security' => 'var(--red)',
         'hosting' => 'var(--blue)',
