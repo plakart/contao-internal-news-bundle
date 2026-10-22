@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\EventListener;
+namespace Plakart\InternalNewsBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 
 /**
  * Entfernt das Pflege-Modul aus der Modul-Auswahl von Benutzern und Benutzergruppen,

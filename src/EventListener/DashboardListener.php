@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\EventListener;
+namespace Plakart\InternalNewsBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Doctrine\DBAL\Connection;
-use Sgv\InternalNewsBundle\Category;
-use Sgv\InternalNewsBundle\Dashboard\NewsRenderer;
+use Plakart\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Dashboard\NewsRenderer;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\EventListener;
+namespace Plakart\InternalNewsBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\StringUtil;
-use Sgv\InternalNewsBundle\Category;
-use Sgv\InternalNewsBundle\Dashboard\NewsRenderer;
+use Plakart\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Dashboard\NewsRenderer;
 
 #[AsCallback(table: Category::TABLE, target: 'list.label.label')]
 class ListLabelListener

@@ -18,11 +18,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Sgv\\InternalNewsBundle\\": "src/"
+            "Plakart\\InternalNewsBundle\\": "src/"
         }
     },
     "extra": {
-        "contao-manager-plugin": "Sgv\\InternalNewsBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Plakart\\InternalNewsBundle\\ContaoManager\\Plugin"
     },
     "config": {
         "allow-plugins": {

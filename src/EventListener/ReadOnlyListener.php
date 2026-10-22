@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\EventListener;
+namespace Plakart\InternalNewsBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\CoreBundle\Security\ContaoCorePermissions;
 use Contao\Input;
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 use Symfony\Bundle\SecurityBundle\Security;
 
 /**

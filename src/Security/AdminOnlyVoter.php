@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\Security;
+namespace Plakart\InternalNewsBundle\Security;
 
 use Contao\CoreBundle\Security\ContaoCorePermissions;
 use Contao\CoreBundle\Security\DataContainer\CreateAction;
 use Contao\CoreBundle\Security\DataContainer\DeleteAction;
 use Contao\CoreBundle\Security\DataContainer\UpdateAction;
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;

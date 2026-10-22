@@ -3,6 +3,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    Sgv\InternalNewsBundle\:
+    Plakart\InternalNewsBundle\:
         resource: ../src
-        exclude: ../src/{ContaoManager,SgvInternalNewsBundle.php}
+        exclude: ../src/{ContaoManager,PlakartInternalNewsBundle.php}

@@ -2,7 +2,7 @@
 
 use Contao\DataContainer;
 use Contao\DC_Table;
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 
 $GLOBALS['TL_DCA'][Category::TABLE] = [
     'config' => [

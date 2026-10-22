@@ -1,6 +1,6 @@
 <?php
 
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 
 // Pflege (nur Admins, per AdminOnlyVoter erzwungen)
 $GLOBALS['BE_MOD']['system'][Category::MODULE_EDIT] = [

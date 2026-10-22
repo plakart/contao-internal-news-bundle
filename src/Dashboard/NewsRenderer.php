@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle\Dashboard;
+namespace Plakart\InternalNewsBundle\Dashboard;
 
 use Contao\Config;
 use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Contao\Date;
 use Contao\StringUtil;
-use Sgv\InternalNewsBundle\Category;
+use Plakart\InternalNewsBundle\Category;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;

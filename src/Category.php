@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sgv\InternalNewsBundle;
+namespace Plakart\InternalNewsBundle;
 
 /**
  * Feste Kategorie-Liste. Die Labels stehen in der Sprachdatei
