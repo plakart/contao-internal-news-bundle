@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
         ],
     ],
     'palettes' => [
-        'default' => 'date,category,headline,text',
+        'default' => 'date,category,headline,text;{publish_legend},start,stop',
     ],
     'fields' => [
         'id' => [
@@ -63,6 +63,16 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
             'reference' => &$GLOBALS['TL_LANG'][Category::TABLE]['categories'],
             'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
             'sql' => "varchar(32) NOT NULL default ''",
+        ],
+        'start' => [
+            'inputType' => 'text',
+            'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
+            'sql' => ['type' => 'string', 'length' => 10, 'default' => '', 'platformOptions' => ['collation' => 'ascii_bin']],
+        ],
+        'stop' => [
+            'inputType' => 'text',
+            'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
+            'sql' => ['type' => 'string', 'length' => 10, 'default' => '', 'platformOptions' => ['collation' => 'ascii_bin']],
         ],
         'headline' => [
             'inputType' => 'text',

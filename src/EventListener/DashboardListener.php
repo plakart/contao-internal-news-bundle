@@ -41,7 +41,8 @@ class DashboardListener
     private function render(): string
     {
         $rows = $this->connection->fetchAllAssociative(
-            \sprintf('SELECT `date`, category, headline, `text` FROM %s ORDER BY `date` DESC, id DESC LIMIT %d', Category::TABLE, self::LIMIT),
+            \sprintf("SELECT `date`, category, headline, `text` FROM %s WHERE (start = '' OR start <= :now) AND (stop = '' OR stop > :now) ORDER BY `date` DESC, id DESC LIMIT %d", Category::TABLE, self::LIMIT),
+            ['now' => time()],
         );
 
         $lang = $this->renderer->lang()['dashboard'];

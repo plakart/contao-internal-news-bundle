@@ -5,6 +5,10 @@ $GLOBALS['TL_LANG']['tl_plakart_internal_news']['category'] = ['Kategorie', 'Gen
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['headline'] = ['Überschrift', 'Die Überschrift des Eintrags.'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['text'] = ['Text', 'Der Hinweistext. Fett und Links sind erlaubt.'];
 
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['start'] = ['Anzeigen ab', 'Den Eintrag erst ab diesem Zeitpunkt anzeigen.'];
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['stop'] = ['Anzeigen bis', 'Den Eintrag nur bis zu diesem Zeitpunkt anzeigen.'];
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['publish_legend'] = 'Anzeigezeitraum';
+
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['categories'] = [
     'security' => 'Security',
     'hosting' => 'Hosting',

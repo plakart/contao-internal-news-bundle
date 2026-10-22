@@ -5,7 +5,8 @@ manage entries, all back end users can read them.
 
 ## Features
 
-- Table `tl_plakart_internal_news`: `date`, `category`, `headline`, `text` (TinyMCE with bold and links)
+- Table `tl_plakart_internal_news`: `date`, `category`, `headline`, `text` (TinyMCE with bold and links), `start`/`stop` (display period, like Contao content elements)
+- Entries outside their display period are hidden on the dashboard and in the read-only list; admins still see all entries in the management module
 - Categories (fixed in code, labels in `contao/languages/de`): security, hosting, redaktionstool, recht, web, vertrag, schulung
 - Dashboard: the 5 latest entries plus an "all" link (`parseBackendTemplate` hook on `be_welcome`)
 - Module `plakart_internal_news` (System): management, admin flag only. It cannot be granted through

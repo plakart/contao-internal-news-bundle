@@ -36,6 +36,12 @@ class AccessListener
         $dca['config']['notCreatable'] = true;
         $dca['config']['notCopyable'] = true;
 
+        $time = time();
+        $dca['list']['sorting']['filter'] = [
+            "(start = '' OR start <= $time)",
+            "(stop = '' OR stop > $time)",
+        ];
+
         unset(
             $dca['list']['global_operations']['all'],
             $dca['list']['operations']['edit'],
