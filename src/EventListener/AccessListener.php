@@ -38,6 +38,7 @@ class AccessListener
 
         $time = time();
         $dca['list']['sorting']['filter'] = [
+            'published = 1',
             "(start = '' OR start <= $time)",
             "(stop = '' OR stop > $time)",
         ];
@@ -46,6 +47,7 @@ class AccessListener
             $dca['list']['global_operations']['all'],
             $dca['list']['operations']['edit'],
             $dca['list']['operations']['delete'],
+            $dca['list']['operations']['toggle'],
         );
     }
 }

@@ -5,8 +5,10 @@ $GLOBALS['TL_LANG']['tl_plakart_internal_news']['category'] = ['Kategorie', 'Gen
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['headline'] = ['Überschrift', 'Die Überschrift des Eintrags.'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['text'] = ['Text', 'Der Hinweistext. Fett und Links sind erlaubt.'];
 
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['published'] = ['Anzeigen', 'Den Eintrag im Dashboard anzeigen.'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['start'] = ['Anzeigen ab', 'Den Eintrag erst ab diesem Zeitpunkt anzeigen.'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['stop'] = ['Anzeigen bis', 'Den Eintrag nur bis zu diesem Zeitpunkt anzeigen.'];
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['title_legend'] = 'Eintrag';
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['publish_legend'] = 'Anzeigezeitraum';
 
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['categories'] = [
@@ -22,6 +24,7 @@ $GLOBALS['TL_LANG']['tl_plakart_internal_news']['categories'] = [
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['new'] = ['Neuer Eintrag', 'Einen neuen Eintrag anlegen'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['edit'] = ['Eintrag bearbeiten', 'Eintrag ID %s bearbeiten'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['delete'] = ['Eintrag löschen', 'Eintrag ID %s löschen'];
+$GLOBALS['TL_LANG']['tl_plakart_internal_news']['toggle'] = ['Anzeigen oder verbergen', 'Eintrag ID %s anzeigen oder verbergen'];
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['show'] = ['Details', 'Details des Eintrags ID %s anzeigen'];
 
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['dashboard'] = [

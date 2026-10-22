@@ -35,11 +35,16 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
         'operations' => [
             'edit',
             'delete',
+            'toggle' => [
+                'href' => 'act=toggle&field=published',
+                'icon' => 'visible.svg',
+                'primary' => true,
+            ],
             'show',
         ],
     ],
     'palettes' => [
-        'default' => 'date,category,headline,text;{publish_legend},start,stop',
+        'default' => '{title_legend},date,category,headline,text;{publish_legend},published,start,stop',
     ],
     'fields' => [
         'id' => [
@@ -64,6 +69,13 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
             'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
             'sql' => "varchar(32) NOT NULL default ''",
         ],
+        'published' => [
+            'toggle' => true,
+            'filter' => true,
+            'inputType' => 'checkbox',
+            'eval' => ['doNotCopy' => true],
+            'sql' => ['type' => 'boolean', 'default' => false],
+        ],
         'start' => [
             'inputType' => 'text',
             'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
@@ -81,7 +93,7 @@ $GLOBALS['TL_DCA'][Category::TABLE] = [
         ],
         'text' => [
             'inputType' => 'textarea',
-            'eval' => ['mandatory' => true, 'rte' => 'tinyInternalNews', 'basicEntities' => true, 'tl_class' => 'clr'],
+            'eval' => ['mandatory' => true, 'rte' => 'tinyInternalNews', 'tl_class' => 'clr'],
             'sql' => 'mediumtext NULL',
         ],
     ],

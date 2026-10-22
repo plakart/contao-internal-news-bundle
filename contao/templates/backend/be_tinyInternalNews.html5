@@ -12,6 +12,7 @@
   menubar: false,
 <?php $this->endblock(); ?>
 
-<?php $this->block('toolbar'); ?>
+<?php $this->block('custom'); ?>
+  <?php $this->parent(); ?>
   toolbar: 'bold italic | link unlink',
 <?php $this->endblock(); ?>
