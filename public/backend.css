@@ -67,6 +67,11 @@
     margin-bottom: 0;
 }
 
+.plakart-news__text a,
+.plakart-news__all a {
+    text-decoration: underline;
+}
+
 .plakart-news__all {
     margin: 0;
     text-align: right;
