@@ -2,46 +2,86 @@
     margin: 0 0 1.5rem;
 }
 
-.plakart-news__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.plakart-news__table {
+    width: 100%;
+    margin: 0 0 .75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: .75rem;
+    background: var(--content-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .06), 0 1px 2px rgba(0, 0, 0, .04);
+    font-size: .875rem;
 }
 
-.plakart-news__item {
-    padding: .6rem 0;
-    border-bottom: 1px solid var(--content-border);
+.plakart-news__table th {
+    padding: .75rem 1rem;
+    border: 0;
+    background: var(--header-bg);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 400;
+    letter-spacing: .04em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
-.plakart-news__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    align-items: center;
-    margin-bottom: .25rem;
+.plakart-news__table td {
+    padding: .75rem 1rem;
+    border: 0;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
 }
 
-.plakart-news__date {
-    color: var(--gray);
+.plakart-news__table tbody tr:first-child td {
+    border-top: 0;
+}
+
+.plakart-news__table tbody tr:nth-child(even) td {
+    background: var(--table-even);
+}
+
+.plakart-news__date,
+.plakart-news__category {
+    width: 1%;
+    white-space: nowrap;
 }
 
 .plakart-news__headline {
-    display: block;
+    margin: 0 0 .25rem;
+    font-weight: 600;
+}
+
+.plakart-news__text {
+    max-width: 70ch;
+    line-height: 1.6;
+}
+
+.plakart-news__text p {
+    margin: 0 0 .5rem;
+}
+
+.plakart-news__text > :last-child {
+    margin-bottom: 0;
 }
 
 .plakart-news__all {
-    margin-top: .75rem;
+    margin: 0;
+    text-align: right;
+    font-size: .875rem;
 }
 
 .plakart-news-badge {
     --plakart-news-color: var(--gray);
     display: inline-block;
-    padding: 1px 8px;
-    border: 1px solid color-mix(in srgb, var(--plakart-news-color) 60%, transparent);
-    border-radius: .375rem;
-    background: color-mix(in srgb, var(--plakart-news-color) 15%, transparent);
+    padding: .1rem .6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--plakart-news-color) 16%, transparent);
     color: var(--text);
-    font-size: .85em;
+    font-size: .75rem;
+    font-weight: 500;
     line-height: 1.5;
     white-space: nowrap;
 }
@@ -53,3 +93,31 @@
 .plakart-news-badge--web { --plakart-news-color: var(--contao); }
 .plakart-news-badge--vertrag { --plakart-news-color: var(--gray); }
 .plakart-news-badge--schulung { --plakart-news-color: #8250c8; }
+
+@media (max-width: 768px) {
+    .plakart-news__table thead {
+        display: none;
+    }
+
+    .plakart-news__table,
+    .plakart-news__table tbody,
+    .plakart-news__table tr,
+    .plakart-news__table td {
+        display: block;
+    }
+
+    .plakart-news__table td {
+        width: auto;
+        padding: .25rem 1rem;
+        border: 0;
+    }
+
+    .plakart-news__table tr {
+        padding: .5rem 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .plakart-news__table tbody tr:first-child {
+        border-top: 0;
+    }
+}

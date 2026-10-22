@@ -22,6 +22,9 @@ $GLOBALS['TL_LANG']['tl_plakart_internal_news']['show'] = ['Details', 'Details d
 
 $GLOBALS['TL_LANG']['tl_plakart_internal_news']['dashboard'] = [
     'headline' => 'Interne News',
+    'date' => 'Datum',
+    'category' => 'Kategorie',
+    'entry' => 'Eintrag',
     'all' => 'Alle anzeigen',
     'empty' => 'Es gibt noch keine Einträge.',
 ];

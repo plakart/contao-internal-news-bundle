@@ -51,11 +51,16 @@ class DashboardListener
             return $html.'<p>'.htmlspecialchars($lang['empty']).'</p></div>';
         }
 
-        $html .= '<ul class="plakart-news__list">';
+        $html .= \sprintf(
+            '<table class="plakart-news__table"><thead><tr><th>%s</th><th>%s</th><th>%s</th></tr></thead><tbody>',
+            htmlspecialchars($lang['date']),
+            htmlspecialchars($lang['category']),
+            htmlspecialchars($lang['entry']),
+        );
 
         foreach ($rows as $row) {
             $html .= \sprintf(
-                '<li class="plakart-news__item"><div class="plakart-news__meta"><time class="plakart-news__date">%s</time>%s</div><div><strong class="plakart-news__headline">%s</strong>%s</div></li>',
+                '<tr><td class="plakart-news__date">%s</td><td class="plakart-news__category">%s</td><td><div class="plakart-news__headline">%s</div><div class="plakart-news__text">%s</div></td></tr>',
                 htmlspecialchars($this->renderer->formatDate($row['date'])),
                 $this->renderer->badge((string) $row['category']),
                 htmlspecialchars((string) $row['headline']),
@@ -65,6 +70,6 @@ class DashboardListener
 
         $url = $this->router->generate('contao_backend', ['do' => Category::MODULE_LIST]);
 
-        return $html.\sprintf('</ul><p class="plakart-news__all"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($lang['all']));
+        return $html.\sprintf('</tbody></table><p class="plakart-news__all"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($lang['all']));
     }
 }
