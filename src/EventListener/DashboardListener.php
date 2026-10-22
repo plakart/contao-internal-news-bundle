@@ -9,7 +9,6 @@ use Doctrine\DBAL\Connection;
 use Plakart\InternalNewsBundle\Category;
 use Plakart\InternalNewsBundle\Dashboard\NewsRenderer;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 // Contao 5.7 has no dashboard widget API, so the panel is injected into be_welcome.
 #[AsHook('parseBackendTemplate')]
@@ -21,7 +20,6 @@ class DashboardListener
         private readonly Connection $connection,
         private readonly NewsRenderer $renderer,
         private readonly RouterInterface $router,
-        private readonly TranslatorInterface $translator,
     ) {
     }
 
@@ -49,11 +47,11 @@ class DashboardListener
             \sprintf('SELECT `date`, category, headline, `text` FROM %s ORDER BY `date` DESC, id DESC LIMIT %d', Category::TABLE, self::LIMIT),
         );
 
-        $trans = fn (string $key): string => $this->translator->trans($key, [], 'contao_tl_sgv_internal_news', 'de');
-        $html = '<div id="sgv_internal_news"><h2>'.htmlspecialchars($trans('dashboard.headline')).'</h2>';
+        $lang = $this->renderer->lang()['dashboard'];
+        $html = '<div id="sgv_internal_news"><h2>'.htmlspecialchars($lang['headline']).'</h2>';
 
         if ([] === $rows) {
-            return $html.'<p>'.htmlspecialchars($trans('dashboard.empty')).'</p></div>';
+            return $html.'<p>'.htmlspecialchars($lang['empty']).'</p></div>';
         }
 
         $html .= '<ul style="list-style:none;margin:0;padding:0">';
@@ -70,6 +68,6 @@ class DashboardListener
 
         $url = $this->router->generate('contao_backend', ['do' => Category::MODULE_LIST]);
 
-        return $html.\sprintf('</ul><p style="margin-top:.75rem"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($trans('dashboard.all')));
+        return $html.\sprintf('</ul><p style="margin-top:.75rem"><a href="%s">%s</a></p></div>', htmlspecialchars($url), htmlspecialchars($lang['all']));
     }
 }

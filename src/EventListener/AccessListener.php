@@ -10,13 +10,7 @@ use Contao\Input;
 use Plakart\InternalNewsBundle\Category;
 use Symfony\Bundle\SecurityBundle\Security;
 
-/**
- * Serverseitige Admin-Beschränkung. Der Callback läuft bei jedem Aufruf der Tabelle,
- * also auch bei direktem URL-Aufruf.
- *
- * - Pflege-Modul (do=sgv_internal_news): nur für Admins, sonst AccessDenied.
- * - Alle anderen Zugänge (Gesamtliste): schreibgeschützt für alle, auch für Admins.
- */
+// Runs on every table access, including direct URL calls.
 #[AsCallback(table: Category::TABLE, target: 'config.onload')]
 class AccessListener
 {

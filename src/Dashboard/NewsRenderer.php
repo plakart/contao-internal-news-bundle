@@ -8,19 +8,14 @@ use Contao\Config;
 use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Contao\Date;
 use Contao\StringUtil;
+use Contao\System;
 use Plakart\InternalNewsBundle\Category;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * Erzeugt Label und Text-Markup, das im Dashboard und in der Backend-Liste gleich aussieht.
- * Es wird nur mit Contao-CSS-Variablen gefärbt, damit Hell/Dunkel ohne eigenes CSS passt.
- */
 class NewsRenderer
 {
     public function __construct(
-        private readonly TranslatorInterface $translator,
         private readonly InsertTagParser $insertTagParser,
     ) {
     }
@@ -32,10 +27,17 @@ class NewsRenderer
 
     public function categoryLabel(string $category): string
     {
-        $id = 'categories.'.$category;
-        $label = $this->translator->trans($id, [], 'contao_tl_sgv_internal_news');
+        return $this->lang()['categories'][$category] ?? $category;
+    }
 
-        return $label === $id ? $category : $label;
+    /**
+     * @return array<string, mixed>
+     */
+    public function lang(): array
+    {
+        System::loadLanguageFile(Category::TABLE, 'de');
+
+        return $GLOBALS['TL_LANG'][Category::TABLE];
     }
 
     public function badge(string $category): string
@@ -49,12 +51,10 @@ class NewsRenderer
         );
     }
 
-    /**
-     * Rich-Text ausgeben: erst Insert-Tags (Link-Picker) auflösen, dann bereinigen.
-     */
     public function text(string $html): string
     {
         $html = StringUtil::decodeEntities($html);
+        // Resolve insert tags (link picker) before sanitizing.
         $html = $this->insertTagParser->replaceInline($html);
 
         $config = (new HtmlSanitizerConfig())
