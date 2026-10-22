@@ -24,7 +24,7 @@ class AccessListener
 
         if (Category::MODULE_EDIT === Input::get('do')) {
             if (!$isAdmin) {
-                throw new AccessDeniedException('Das Modul "'.Category::MODULE_EDIT.'" ist nur für Administratoren erlaubt.');
+                throw new AccessDeniedException('Back end module "'.Category::MODULE_EDIT.'" is only allowed for administrators.');
             }
 
             return;
