@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace Plakart\InternalNewsBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
-use Contao\CoreBundle\Security\ContaoCorePermissions;
+use Contao\CoreBundle\Exception\AccessDeniedException;
 use Contao\Input;
 use Plakart\InternalNewsBundle\Category;
 use Symfony\Bundle\SecurityBundle\Security;
 
 /**
- * Die Gesamtliste (Modul sgv_internal_news_list) ist für alle schreibgeschützt.
- * Die eigentliche Sperre sind das Modul-Recht und der AdminOnlyVoter; das hier
- * blendet nur die Bearbeiten-Funktionen aus.
+ * Serverseitige Admin-Beschränkung. Der Callback läuft bei jedem Aufruf der Tabelle,
+ * also auch bei direktem URL-Aufruf.
+ *
+ * - Pflege-Modul (do=sgv_internal_news): nur für Admins, sonst AccessDenied.
+ * - Alle anderen Zugänge (Gesamtliste): schreibgeschützt für alle, auch für Admins.
  */
 #[AsCallback(table: Category::TABLE, target: 'config.onload')]
-class ReadOnlyListener
+class AccessListener
 {
     public function __construct(private readonly Security $security)
     {
@@ -24,9 +26,13 @@ class ReadOnlyListener
 
     public function __invoke(): void
     {
-        $readOnly = Category::MODULE_EDIT !== Input::get('do') || !$this->security->isGranted('ROLE_ADMIN');
+        $isAdmin = $this->security->isGranted('ROLE_ADMIN');
 
-        if (!$readOnly) {
+        if (Category::MODULE_EDIT === Input::get('do')) {
+            if (!$isAdmin) {
+                throw new AccessDeniedException('Das Modul "'.Category::MODULE_EDIT.'" ist nur für Administratoren erlaubt.');
+            }
+
             return;
         }
 

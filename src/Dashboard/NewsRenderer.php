@@ -9,8 +9,8 @@ use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Contao\Date;
 use Contao\StringUtil;
 use Plakart\InternalNewsBundle\Category;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HtmlSanitizer\HtmlSanitizerInterface;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -22,8 +22,6 @@ class NewsRenderer
     public function __construct(
         private readonly TranslatorInterface $translator,
         private readonly InsertTagParser $insertTagParser,
-        #[Autowire(service: 'contao.html_sanitizer')]
-        private readonly HtmlSanitizerInterface $sanitizer,
     ) {
     }
 
@@ -42,7 +40,7 @@ class NewsRenderer
 
     public function badge(string $category): string
     {
-        $color = 'var('.(Category::COLORS[$category] ?? '--gray').')';
+        $color = Category::COLORS[$category] ?? 'var(--gray)';
 
         return \sprintf(
             '<span style="display:inline-block;padding:1px 8px;border:1px solid color-mix(in srgb,%1$s 60%%,transparent);border-radius:var(--border-radius,.375rem);background:color-mix(in srgb,%1$s 15%%,transparent);color:var(--text);font-size:.85em;line-height:1.5;white-space:nowrap">%2$s</span>',
@@ -59,6 +57,19 @@ class NewsRenderer
         $html = StringUtil::decodeEntities($html);
         $html = $this->insertTagParser->replaceInline($html);
 
-        return $this->sanitizer->sanitize($html);
+        $config = (new HtmlSanitizerConfig())
+            ->allowElement('a', ['href', 'title'])
+            ->allowElement('strong')
+            ->allowElement('b')
+            ->allowElement('em')
+            ->allowElement('i')
+            ->allowElement('br')
+            ->allowElement('p')
+            ->allowLinkSchemes(['http', 'https', 'mailto'])
+            ->allowRelativeLinks()
+            ->forceAttribute('a', 'rel', 'noopener')
+        ;
+
+        return (new HtmlSanitizer($config))->sanitize($html);
     }
 }
