@@ -1,0 +1,34 @@
+{
+    "name": "sgv/contao-internal-news-bundle",
+    "description": "Interne News im Contao-Backend-Dashboard (Pflege nur für Admins)",
+    "type": "contao-bundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Stefan Schulz-Lauterbach",
+            "email": "ssl@clickpress.de"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "contao/core-bundle": "^5.7"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sgv\\InternalNewsBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Sgv\\InternalNewsBundle\\ContaoManager\\Plugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": false,
+            "contao/manager-plugin": true
+        }
+    }
+}

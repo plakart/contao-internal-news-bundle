@@ -1,0 +1,17 @@
+<?php $this->extend('be_tinyMCE'); ?>
+
+<?php $this->block('plugins'); ?>
+  plugins: 'autosave link',
+<?php $this->endblock(); ?>
+
+<?php $this->block('valid_elements'); ?>
+  valid_elements: 'a[href|title|target|rel],strong/b,em/i,br,p',
+<?php $this->endblock(); ?>
+
+<?php $this->block('menubar'); ?>
+  menubar: false,
+<?php $this->endblock(); ?>
+
+<?php $this->block('toolbar'); ?>
+  toolbar: 'bold italic | link unlink',
+<?php $this->endblock(); ?>
